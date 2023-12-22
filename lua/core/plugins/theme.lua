@@ -1,11 +1,8 @@
 return {
-  'navarasu/onedark.nvim',
+  'Mofiqul/vscode.nvim',
   priority = 1000,
   config = function()
-    require('onedark').setup({
-      style = 'darker'
-    })
-
-    vim.cmd.colorscheme 'onedark'
+    vim.o.background = 'dark'
+    require('vscode').load()
   end,
 }
