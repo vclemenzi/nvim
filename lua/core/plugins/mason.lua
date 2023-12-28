@@ -11,7 +11,7 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    dependencies = { "neovim/nvim-lspconfig", "lukas-reineke/lsp-format.nvim" },
+    dependencies = { "neovim/nvim-lspconfig" },
     config = function()
       local m = require("mason-lspconfig")
 
@@ -21,11 +21,7 @@ return {
 
       m.setup_handlers({
         function(server)
-          require("lspconfig")[server].setup({
-            on_attach = function(client)
-              require("lsp-format").on_attach(client)
-            end,
-          })
+          require("lspconfig")[server].setup({})
         end,
       })
     end,
