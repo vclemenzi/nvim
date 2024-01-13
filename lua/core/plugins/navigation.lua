@@ -110,6 +110,10 @@ return {
         "<cmd>Telescope help_tags<CR>",
         desc = "Get help!",
       },
+      {
+        "<leader>sl",
+        "<cmd>Telescope lsp_definitions<CR>",
+      }
     },
   },
   {
