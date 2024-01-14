@@ -6,7 +6,7 @@ return {
       require("lualine").setup({
         options = {
           icons_enabled = true,
-          theme = 'vscode',
+          theme = 'auto',
           component_separators = { '|', '|' },
           section_separators = { '', '' },
         },
@@ -22,11 +22,11 @@ return {
     end,
   },
   {
-    'Mofiqul/vscode.nvim',
+    'olimorris/onedarkpro.nvim',
     priority = 1000,
     config = function()
       vim.o.background = 'dark'
-      require('vscode').load()
+      vim.cmd [[colorscheme onedark]]
     end,
   },
   {
