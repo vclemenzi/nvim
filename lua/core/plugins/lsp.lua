@@ -2,6 +2,8 @@ return {
   {
     "VonHeikemen/lsp-zero.nvim",
     branch = "v3.x",
+    event = 'VimEnter',
+    lazy = true,
     dependencies = {
       "neovim/nvim-lspconfig",
       "williamboman/mason.nvim",

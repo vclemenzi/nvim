@@ -4,46 +4,44 @@ return {
     cmd = "Telescope",
     dependencies = { "nvim-lua/plenary.nvim" },
     lazy = true,
-    config = function()
-      require("telescope").setup({
-        defaults = {
-          layout_config = {
-            horizontal = {
-              prompt_position = "top",
-              preview_width = 0.55,
-              results_width = 0.8,
-            },
-            vertical = {
-              mirror = false,
-            },
-            width = 0.60,
-            height = 0.40,
+    opts = {
+      defaults = {
+        layout_config = {
+          horizontal = {
+            prompt_position = "top",
+            preview_width = 0.55,
+            results_width = 0.8,
           },
-          file_ignore_patterns = { "node_modules" },
+          vertical = {
+            mirror = false,
+          },
+          width = 0.90,
+          height = 0.70,
         },
-        pickers = {
-          find_files = {
+        file_ignore_patterns = { "node_modules" },
+      },
+      pickers = {
+        find_files = {
+          previewer = false,
+          theme = "dropdown",
+          no_ignore = true,
+        },
+        file_browser = {
+          previewer = false,
+          theme = "dropdown",
+        },
+        buffers = {
+          previewer = false,
+          theme = "dropdown",
+        },
+        man_pages = {
+          previewer = false,
+          help_tags = {
             previewer = false,
-            theme = "dropdown",
-            no_ignore = true,
-          },
-          file_browser = {
-            previewer = false,
-            theme = "dropdown",
-          },
-          buffers = {
-            previewer = false,
-            theme = "dropdown",
-          },
-          man_pages = {
-            previewer = false,
-            help_tags = {
-              previewer = false,
-            },
           },
         },
-      })
-    end,
+      },
+    },
     keys = {
       {
         "<leader><space>",
@@ -119,16 +117,15 @@ return {
   {
     'stevearc/oil.nvim',
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    init = function()
-      require("oil").setup({
-        view_options = {
-          show_hidden = true,
-        },
-        columns = {
-          "icon",
-        },
-      })
-    end,
+    lazy = false,
+    opts = {
+      view_options = {
+        show_hidden = true,
+      },
+      columns = {
+        "icon",
+      },
+    },
     keys = {
       {
         "<leader>e",

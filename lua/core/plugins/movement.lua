@@ -1,7 +1,8 @@
 return {
   {
     "folke/flash.nvim",
-    event = "VeryLazy",
+    event = "BufRead",
+    lazy = true,
     opts = {},
     keys = {
       { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
@@ -13,7 +14,9 @@ return {
   },
   {
     "m4xshen/hardtime.nvim",
+    event = "BufRead",
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-    opts = {}
+    opts = {},
+    lazy = true,
   },
 }
