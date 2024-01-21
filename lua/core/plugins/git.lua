@@ -26,5 +26,23 @@ return {
     "tpope/vim-fugitive",
     cmd = "Git",
     lazy = true,
+  },
+
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+      "nvim-telescope/telescope.nvim",
+      "ibhagwan/fzf-lua",
+    },
+    config = true,
+    keys = {
+      {
+        "<leader>gg",
+        "<cmd>Neogit<cr>",
+        desc = "Open Neogit",
+      },
+    },
   }
 }
