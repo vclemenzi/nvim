@@ -14,7 +14,9 @@ return {
       "onsails/lspkind.nvim",
       "lukas-reineke/lsp-format.nvim",
       "zbirenbaum/copilot-cmp",
-      "zbirenbaum/copilot.lua"
+      "zbirenbaum/copilot.lua",
+      "saadparwaiz1/cmp_luasnip",
+      "rafamadriz/friendly-snippets"
     },
     config = function()
       local zero = require("lsp-zero")
@@ -57,9 +59,15 @@ return {
             symbol_map = { Copilot = "" }
           }),
         },
+        snippet = {
+          expand = function(args)
+            require('luasnip').lsp_expand(args.body)
+          end
+        },
         sources = {
           { name = 'copilot' },
           { name = 'nvim_lsp' },
+          { name = 'luasnip' },
         },
       })
 
@@ -69,6 +77,56 @@ return {
         panel = { enabled = false },
       })
       require('copilot_cmp').setup()
+
+      -- Snippets
+      local luasnip = require('luasnip')
+
+      require("luasnip.loaders.from_vscode").lazy_load()
+
+      local s = luasnip.snippet
+      local t = luasnip.text_node
+      local i = luasnip.insert_node
+
+      -- log -> <lang-log>(|)
+      luasnip.add_snippets("javascript", {
+        s("log", {
+          t("console.log("),
+          i(1),
+          t(")"),
+        }),
+      })
+
+      luasnip.add_snippets("typescript", {
+        s("log", {
+          t("console.log("),
+          i(1),
+          t(")"),
+        }),
+      })
+
+      luasnip.add_snippets("lua", {
+        s("log", {
+          t("print("),
+          i(1),
+          t(")"),
+        }),
+      })
+
+      luasnip.add_snippets("go", {
+        s("log", {
+          t("fmt.Println("),
+          i(1),
+          t(")"),
+        }),
+      })
+
+      luasnip.add_snippets("rust", {
+        s("log", {
+          t("println!("),
+          i(1),
+          t(")"),
+        }),
+      })
     end,
   },
   {
