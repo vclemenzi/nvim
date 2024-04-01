@@ -9,13 +9,13 @@ return {
     cmd = "VimBeGood",
   },
   {
-    "vclemenzi/presence.nvim",
+    "IogaMaster/neocord",
     lazy = true,
     event = "BufRead",
     opts = {
       auto_update        = true,
-      neovim_image_text  = "I use Neovim, btw",
-      main_image         = "file",
+      main_image         = "language",
+      logo               = nil,
       file_explorer_text = "Browsing files...",
     }
   },
