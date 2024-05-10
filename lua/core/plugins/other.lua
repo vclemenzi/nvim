@@ -9,17 +9,6 @@ return {
     cmd = "VimBeGood",
   },
   {
-    "IogaMaster/neocord",
-    lazy = true,
-    event = "BufRead",
-    opts = {
-      auto_update        = true,
-      main_image         = "language",
-      logo               = nil,
-      file_explorer_text = "Browsing files...",
-    }
-  },
-  {
     "folke/which-key.nvim",
     event = "VeryLazy",
     init = function()
