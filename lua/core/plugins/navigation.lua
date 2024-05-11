@@ -144,5 +144,13 @@ return {
       { "{Right-Mapping}",    ":<C-U>TmuxNavigateRight<cr>",    desc = "Navigate right in Tmux" },
       { "{Previous-Mapping}", ":<C-U>TmuxNavigatePrevious<cr>", desc = "Navigate to the previous location in Tmux" },
     },
+  },
+  {
+    "anuvyklack/windows.nvim",
+    dependencies = {
+      "anuvyklack/middleclass",
+      "anuvyklack/animation.nvim"
+    },
+    opts = {}
   }
 }
