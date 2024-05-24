@@ -83,50 +83,9 @@ return {
 
       require("luasnip.loaders.from_vscode").lazy_load()
 
-      local s = luasnip.snippet
-      local t = luasnip.text_node
-      local i = luasnip.insert_node
-
-      -- log -> <lang-log>(|)
-      luasnip.add_snippets("javascript", {
-        s("log", {
-          t("console.log("),
-          i(1),
-          t(")"),
-        }),
-      })
-
-      luasnip.add_snippets("typescript", {
-        s("log", {
-          t("console.log("),
-          i(1),
-          t(")"),
-        }),
-      })
-
-      luasnip.add_snippets("lua", {
-        s("log", {
-          t("print("),
-          i(1),
-          t(")"),
-        }),
-      })
-
-      luasnip.add_snippets("go", {
-        s("log", {
-          t("fmt.Println("),
-          i(1),
-          t(")"),
-        }),
-      })
-
-      luasnip.add_snippets("rust", {
-        s("log", {
-          t("println!("),
-          i(1),
-          t(")"),
-        }),
-      })
+      -- local s = luasnip.snippet
+      -- local t = luasnip.text_node
+      -- local i = luasnip.insert_node
     end,
   },
   {
@@ -144,6 +103,8 @@ return {
   },
   {
     'folke/neodev.nvim',
+    lazy = true,
+    event = 'BufRead',
     opts = {},
   }
 }
