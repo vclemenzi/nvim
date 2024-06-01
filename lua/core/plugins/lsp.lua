@@ -83,9 +83,21 @@ return {
 
       require("luasnip.loaders.from_vscode").lazy_load()
 
-      -- local s = luasnip.snippet
-      -- local t = luasnip.text_node
-      -- local i = luasnip.insert_node
+      local s = luasnip.snippet
+      local t = luasnip.text_node
+      local i = luasnip.insert_node
+
+      -- Error handling for go
+      -- if err != nil {
+      --   |
+      -- }
+      luasnip.add_snippets("go", {
+        s("error", {
+          t({ "if err != nil {", "  " }),
+          i(0),
+          t({ "", "}" }),
+        }),
+      })
     end,
   },
   {
