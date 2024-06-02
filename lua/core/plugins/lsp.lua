@@ -114,6 +114,13 @@ return {
     end,
   },
   {
+    'andersevenrud/nvim_context_vt',
+    after = 'nvim-treesitter',
+    lazy = true,
+    event = 'BufRead',
+    opts = {},
+  },
+  {
     'folke/neodev.nvim',
     lazy = true,
     event = 'BufRead',
