@@ -1,6 +1,7 @@
 return {
   {
     'nvim-lualine/lualine.nvim',
+    lazy = true,
     event = 'VimEnter',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {
@@ -45,6 +46,7 @@ return {
   {
     "nvim-tree/nvim-web-devicons",
     event = 'VimEnter',
+    lazy = true,
     opts = {
       override_by_filename = {
         [".gitignore"] = {
@@ -220,6 +222,7 @@ return {
   {
     'goolord/alpha-nvim',
     event = "VimEnter",
+    lazy = true,
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     lazy = true,
     init = function()
@@ -239,5 +242,6 @@ return {
     'stevearc/dressing.nvim',
     opts = {},
     event = 'VimEnter',
+    lazy = true,
   }
 }

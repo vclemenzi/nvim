@@ -1,6 +1,7 @@
 return {
   {
     "Eandrju/cellular-automaton.nvim",
+    lazy = true,
     cmd = "CellularAutomaton",
   },
   {
@@ -10,8 +11,9 @@ return {
   },
   {
     "folke/which-key.nvim",
+    lazy = true,
     event = "VeryLazy",
-    init = function()
+    setup = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
     end,
