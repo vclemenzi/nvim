@@ -245,5 +245,13 @@ return {
     opts = {},
     event = 'VimEnter',
     lazy = true,
+  },
+  {
+    'rcarriga/nvim-notify',
+    event = 'VimEnter',
+    lazy = true,
+    opts = function()
+      vim.notify = require('notify')
+    end,
   }
 }
