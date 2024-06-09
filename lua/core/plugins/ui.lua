@@ -243,12 +243,12 @@ return {
   {
     'stevearc/dressing.nvim',
     opts = {},
-    event = 'VimEnter',
+    event = 'VeryLazy',
     lazy = true,
   },
   {
     'rcarriga/nvim-notify',
-    event = 'VimEnter',
+    event = 'VeryLazy',
     lazy = true,
     opts = function()
       vim.notify = require('notify')
