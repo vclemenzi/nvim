@@ -18,7 +18,7 @@ return {
       "saadparwaiz1/cmp_luasnip",
       "rafamadriz/friendly-snippets"
     },
-    config = function()
+    opts = function()
       local zero = require("lsp-zero")
 
       zero.on_attach(function(client, bufnr)
@@ -98,20 +98,20 @@ return {
           t({ "", "}" }),
         }),
       })
+
+      return {}
     end,
   },
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        auto_install = true,
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = false,
-        }
-      })
-    end,
+    opts = {
+      auto_install = true,
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+      }
+    }
   },
   {
     'andersevenrud/nvim_context_vt',

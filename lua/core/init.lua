@@ -44,13 +44,14 @@ local plugins = {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
-    config = function()
-      require("ibl").setup({
-        indent = {
-          char = "▏",
-        },
-      })
-    end,
+    lazy = true,
+    event = "BufReadPre",
+    main = "ibl",
+    opts = {
+      indent = {
+        char = "▏",
+      },
+    }
   }
 }
 

@@ -176,5 +176,55 @@ return {
       "anuvyklack/animation.nvim"
     },
     opts = {}
+  },
+  {
+    "kevinhwang91/nvim-ufo",
+    lazy = true,
+    event = "BufReadPre",
+    dependencies = {
+      "kevinhwang91/promise-async",
+      {
+        "luukvbaal/statuscol.nvim",
+        lazy = true,
+        event = "BufReadPre",
+        opts = function()
+          local builtin = require("statuscol.builtin")
+
+          return {
+            relculright = true,
+            segments = {
+              { text = { builtin.foldfunc },      click = "v:lua.ScFa" },
+              { text = { "%s" },                  click = "v:lua.ScSa" },
+              { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" }
+            }
+          }
+        end
+      }
+    },
+    opts = function()
+      vim.o.foldcolumn = '1' -- '0' is not bad
+      vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+      vim.o.foldlevelstart = 99
+      vim.o.foldenable = true
+      vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+
+      return {
+        provider_selector = function(_, _, _)
+          return { 'treesitter', 'indent' }
+        end,
+      }
+    end,
+    keys = {
+      {
+        "<leader>zR",
+        "<cmd>lua require('ufo').openAllFolds<cr>",
+        desc = "Open all folds"
+      },
+      {
+        "<leader>zM",
+        "<cmd>lua require('ufo').closeAllFolds<cr>",
+        desc = "Close all folds"
+      }
+    },
   }
 }

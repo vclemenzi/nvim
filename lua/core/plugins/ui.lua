@@ -37,8 +37,10 @@ return {
   },
   {
     'olimorris/onedarkpro.nvim',
+    event = 'VimEnter',
+    lazy = true,
     priority = 1000,
-    config = function()
+    opts = function()
       vim.o.background = 'dark'
       vim.cmd [[colorscheme onedark]]
     end,
