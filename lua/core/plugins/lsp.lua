@@ -105,13 +105,15 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    opts = {
-      auto_install = true,
-      highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
+    init = function()
+      require('nvim-treesitter.configs').setup {
+        auto_install = true,
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = false,
+        }
       }
-    }
+    end
   },
   {
     'andersevenrud/nvim_context_vt',
