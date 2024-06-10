@@ -263,12 +263,4 @@ return {
     event = 'VeryLazy',
     lazy = true,
   },
-  {
-    'rcarriga/nvim-notify',
-    event = 'VeryLazy',
-    lazy = true,
-    opts = function()
-      vim.notify = require('notify')
-    end,
-  }
 }
