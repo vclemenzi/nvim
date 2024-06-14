@@ -120,20 +120,6 @@ return {
         "<cmd>Telescope git_files<CR>",
         desc = "View current git repository files",
       },
-      {
-        "<leader>sm",
-        "<cmd>Telescope man_pages<CR>",
-        desc = "Open a manual (man)",
-      },
-      {
-        "<leader>sh",
-        "<cmd>Telescope help_tags<CR>",
-        desc = "Get help!",
-      },
-      {
-        "<leader>sl",
-        "<cmd>Telescope lsp_definitions<CR>",
-      }
     },
   },
   {
@@ -141,8 +127,14 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     lazy = false,
     opts = {
+      default_file_explorer = true,
+      skip_confirm_for_simple_edits = true,
       view_options = {
         show_hidden = true,
+        natural_order = true,
+        is_always_hidden = function(file)
+          return file:match "%.git"
+        end,
       },
       columns = {
         "icon",
