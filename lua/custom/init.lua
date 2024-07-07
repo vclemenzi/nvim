@@ -13,11 +13,12 @@ vim.opt.expandtab     = true
 vim.opt.laststatus    = 3
 vim.api.nvim_set_option("clipboard", "unnamedplus")
 
-require("core.aliases")
-require("core.mappings")
+require("custom.aliases")
+require("custom.mappings")
 
--- Plugins
-local plugins = {
+-- Plugin Manager
+require("lazy").setup(
+  { import = "custom/plugins" }, 
   {
     'neovim/nvim-lspconfig',
   },
@@ -53,35 +54,4 @@ local plugins = {
       },
     }
   }
-}
-
--- Plugin Manager
-local lazy = require("lazy")
-
-local function getConfigFiles()
-  local files = {}
-  local script_path = vim.fn.stdpath("config") ..
-      "/lua/core/plugins"
-  local dir_contents = vim.fn.readdir(script_path)
-  for _, item in ipairs(dir_contents) do
-    if item:match("%.lua$") then
-      local config_name = item:match("(.+)%.lua$")
-      table.insert(files, "core.plugins." .. config_name)
-    end
-  end
-
-  return files
-end
-
-local config_files = getConfigFiles()
-
-local lazy_configurations = {}
-
-for _, config_name in ipairs(config_files) do
-  local config = require(config_name)
-  table.insert(lazy_configurations, config)
-end
-
-table.insert(lazy_configurations, 1, plugins)
-
-lazy.setup(lazy_configurations)
+)

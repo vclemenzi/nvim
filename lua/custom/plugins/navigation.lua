@@ -132,9 +132,6 @@ return {
       view_options = {
         show_hidden = true,
         natural_order = true,
-        is_always_hidden = function(file)
-          return file:match "%.git"
-        end,
       },
       columns = {
         "icon",
@@ -158,16 +155,6 @@ return {
       { "{Right-Mapping}",    ":<C-U>TmuxNavigateRight<cr>",    desc = "Navigate right in Tmux" },
       { "{Previous-Mapping}", ":<C-U>TmuxNavigatePrevious<cr>", desc = "Navigate to the previous location in Tmux" },
     },
-  },
-  {
-    "anuvyklack/windows.nvim",
-    lazy = true,
-    event = "BufWinEnter",
-    dependencies = {
-      "anuvyklack/middleclass",
-      "anuvyklack/animation.nvim"
-    },
-    opts = {}
   },
   {
     "kevinhwang91/nvim-ufo",
