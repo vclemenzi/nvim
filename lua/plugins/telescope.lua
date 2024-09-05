@@ -8,7 +8,22 @@ return {
     opts = {
       layout_config = {
         vertical = { width = 0.5 },
-      }
+      },
+      pickers = {
+        find_files = {
+          theme = "dropdown",
+          previewer = false,
+        },
+        buffers = {
+          sort_lastused = true,
+          theme = "dropdown",
+          previewer = false,
+        },
+        current_buffer_fuzzy_find = {
+          theme = "dropdown",
+          previewer = false,
+        },
+      },
     },
     keys = {
       { "<leader><space>", "<cmd>Telescope buffers<cr>",                   desc = "Open buffers" },
