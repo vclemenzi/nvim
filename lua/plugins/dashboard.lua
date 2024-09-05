@@ -2,6 +2,7 @@ return {
   {
     'goolord/alpha-nvim',
     event = 'VimEnter',
+    lazy = true,
     dependencies = { 'echasnovski/mini.icons' },
     config = function()
       local status_ok, alpha = pcall(require, "alpha")

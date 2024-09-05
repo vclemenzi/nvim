@@ -2,7 +2,7 @@ return {
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
-    event = "InsertEnter",
+    lazy = true,
     dependencies = {
       'hrsh7th/nvim-cmp',
     },
@@ -10,6 +10,8 @@ return {
   },
   {
     "zbirenbaum/copilot-cmp",
+    lazy = true,
+    event = "InsertEnter",
     dependencies = {
       'zbirenbaum/copilot.lua',
     },
