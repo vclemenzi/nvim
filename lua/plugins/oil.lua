@@ -2,7 +2,6 @@ return {
   {
     'stevearc/oil.nvim',
     cmd = 'Oil',
-    lazy = true,
     event = 'VimEnter',
     opts = {
       default_file_explorer = true,
