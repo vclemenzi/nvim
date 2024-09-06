@@ -1,40 +1,91 @@
 return {
   {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v4.x',
-    lazy = true,
-    event = 'BufEnter',
+    'neovim/nvim-lspconfig',
+    event = { "BufReadPost", "BufNewFile" },
+    cmd = { "LspInfo", "LspInstall", "LspUninstall" },
     dependencies = {
-      'neovim/nvim-lspconfig',
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/nvim-cmp',
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-vsnip',
-      'hrsh7th/vim-vsnip',
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-      'onsails/lspkind.nvim',
-      'L3MON4D3/LuaSnip',
-      'lukas-reineke/lsp-format.nvim',
+      {
+        'lukas-reineke/lsp-format.nvim',
+        event = 'BufWritePre',
+      },
+      {
+        'hrsh7th/cmp-nvim-lsp',
+        event = 'InsertEnter',
+      },
+      {
+        'williamboman/mason-lspconfig.nvim',
+        event = 'BufReadPost',
+      }
+    },
+    config = function()
+      local ms_lsp = require('mason-lspconfig')
+
+      ms_lsp.setup({
+        ensure_installed = {},
+        handlers = {
+          function(server_name)
+            require('lspconfig')[server_name].setup({
+              capabilities = require('cmp_nvim_lsp').default_capabilities(),
+              on_attach = function(client, bufnr)
+                require('lsp-format').on_attach(client, bufnr)
+              end
+            })
+          end,
+        }
+      })
+    end
+  },
+  {
+    'hrsh7th/nvim-cmp',
+    event = 'InsertEnter',
+    dependencies = {
+      {
+        'hrsh7th/cmp-buffer',
+        event = 'InsertEnter',
+      },
+      {
+        'hrsh7th/cmp-nvim-lsp',
+        event = 'InsertEnter',
+      },
+      {
+        'hrsh7th/cmp-path',
+        event = 'InsertEnter',
+      },
+      {
+        'hrsh7th/cmp-vsnip',
+        event = 'InsertEnter',
+      },
+      {
+        'hrsh7th/vim-vsnip',
+        event = 'InsertEnter',
+      },
+      {
+        'onsails/lspkind.nvim',
+        event = 'InsertEnter',
+      },
+      {
+        'L3MON4D3/LuaSnip',
+        event = 'InsertEnter',
+      },
+      {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        opts = {}
+      },
+      {
+        "zbirenbaum/copilot-cmp",
+        lazy = true,
+        event = "InsertEnter",
+        dependencies = {
+          'zbirenbaum/copilot.lua',
+        },
+        opts = {}
+      }
     },
     opts = function()
-      local lsp_zero = require('lsp-zero')
-
-      lsp_zero.extend_lspconfig({
-        sign_text = true,
-        lsp_attach = function(client, bufnr)
-          lsp_zero.default_keymaps({ buffer = bufnr })
-          require('lsp-format').on_attach(client, bufnr)
-        end,
-        preserve_mappings = false,
-        capabilities = require('cmp_nvim_lsp').default_capabilities(),
-      })
-
       local cmp = require('cmp')
 
-      cmp.setup({
+      return {
         sources = {
           { name = "copilot",  group_index = 2 },
           { name = 'nvim_lsp', group_index = 2 },
@@ -60,25 +111,27 @@ return {
           expand = function(args)
             require('luasnip').lsp_expand(args.body)
           end
-        },
-      })
-
-      require('mason').setup({})
-      require('mason-lspconfig').setup({
-        ensure_installed = {},
-        handlers = {
-          function(server_name)
-            require('lspconfig')[server_name].setup({})
-          end,
         }
-      })
-
-      return {}
+      }
     end
+  },
+  {
+    'williamboman/mason.nvim',
+    cmd = { 'MasonInstall', 'MasonUninstall', 'Mason' },
+    opts = {
+      ui = {
+        icons = {
+          package_installed = "",
+          package_pending = "",
+          package_uninstalled = ""
+        }
+      }
+    }
   },
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    event = 'BufReadPost',
     opts = function()
       require('nvim-treesitter.configs').setup({
         auto_install = true,
@@ -90,5 +143,24 @@ return {
 
       return {}
     end
+  },
+  {
+    'kevinhwang91/nvim-ufo',
+    event = 'BufReadPost',
+    dependencies = {
+      'kevinhwang91/promise-async',
+      'nvim-treesitter/nvim-treesitter',
+    },
+    opts = {
+      filetype_exclude = { 'help', 'alpha', 'dashboard', 'neo-tree', 'Trouble', 'lazy', 'mason' },
+      provider_selector = function(_, _, _)
+        return { 'treesitter', 'indent' }
+      end
+    }
+  },
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {},
   },
 }

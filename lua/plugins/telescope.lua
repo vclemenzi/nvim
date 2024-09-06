@@ -9,6 +9,9 @@ return {
       layout_config = {
         vertical = { width = 0.5 },
       },
+      file_ignore_patterns = {
+        "node_modules",
+      },
       pickers = {
         find_files = {
           theme = "dropdown",
@@ -20,6 +23,10 @@ return {
           previewer = false,
         },
         current_buffer_fuzzy_find = {
+          theme = "dropdown",
+          previewer = false,
+        },
+        oldfiles = {
           theme = "dropdown",
           previewer = false,
         },

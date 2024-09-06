@@ -1,8 +1,9 @@
 return {
   {
     'stevearc/oil.nvim',
+    cmd = 'Oil',
     lazy = true,
-    event = "VimEnter",
+    event = 'VimEnter',
     opts = {
       default_file_explorer = true,
       skip_confirm_for_simple_edits = true,
@@ -15,7 +16,7 @@ return {
       },
     },
     dependencies = {
-      { "nvim-tree/nvim-web-devicons", opts = {} }
+      { "nvim-tree/nvim-web-devicons", opts = {}, lazy = true }
     },
     keys = {
       { "<leader>e", "<cmd>Oil<cr>", desc = "Open file explorer" },
