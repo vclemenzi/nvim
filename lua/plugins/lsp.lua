@@ -111,7 +111,17 @@ return {
           expand = function(args)
             require('luasnip').lsp_expand(args.body)
           end
-        }
+        },
+        window = {
+          completion = cmp.config.window.bordered({
+            winhighlight = 'Normal:CmpPmenu,CursorLine:PmenuSel,Search:None'
+          }),
+          documentation = cmp.config.window.bordered({
+            documentation = {
+              border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+            },
+          }),
+        },
       }
     end
   },

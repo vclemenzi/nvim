@@ -20,7 +20,7 @@ return {
             'diff',
             symbols = {
               added = ' ',
-              modified = ' ',
+              modified = '󰜥 ',
               removed = ' ',
             }
           }
