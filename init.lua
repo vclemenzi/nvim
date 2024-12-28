@@ -6,6 +6,8 @@ vim.opt.cursorline     = true
 
 vim.opt.mouse          = 'a'
 
+vim.opt.laststatus     = 3
+
 vim.opt.tabstop        = 2
 vim.opt.shiftwidth     = 2
 
@@ -17,6 +19,16 @@ vim.o.foldenable       = true
 vim.schedule(function()
 	vim.opt.clipboard = 'unnamedplus'
 end)
+
+-- Create splits
+vim.keymap.set('n', '<C-s>', '<cmd>split<CR>', { noremap = true, desc = 'Split window horizontally' })
+vim.keymap.set('n', '<C-v>', '<cmd>vsplit<CR>', { noremap = true, desc = 'Split window vertically' })
+
+-- Navigate between windows
+vim.keymap.set("n", "<C-h>", [[ <C-w>h ]])
+vim.keymap.set("n", "<C-l>", [[ <C-w>l ]])
+vim.keymap.set("n", "<C-j>", [[ <C-w>j ]])
+vim.keymap.set("n", "<C-k>", [[ <C-w>k ]])
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
@@ -41,5 +53,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
+		{ import = "plugins.lsp" },
 	},
 })

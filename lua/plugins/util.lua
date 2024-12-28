@@ -1,5 +1,10 @@
 return {
 	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		opts = {},
+	},
+	{
 		"folke/flash.nvim",
 		lazy = true,
 		opts = {},
@@ -10,5 +15,10 @@ return {
 			{ "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
 			{ "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
 		},
+	},
+	{
+		'windwp/nvim-autopairs',
+		event = "InsertEnter",
+		config = true
 	}
 }

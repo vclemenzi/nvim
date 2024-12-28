@@ -1,7 +1,8 @@
 return {
-	'navarasu/onedark.nvim',
+	'sainnhe/gruvbox-material',
 	priority = 1000,
 	init = function()
-		vim.cmd.colorscheme "onedark"
+		vim.o.background = "dark"
+		vim.cmd.colorscheme "gruvbox-material"
 	end
 }
