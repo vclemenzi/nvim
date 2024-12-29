@@ -9,13 +9,21 @@ return {
 				event = 'BufWritePre',
 			},
 			{
-				'hrsh7th/cmp-nvim-lsp',
+				'williamboman/mason-lspconfig.nvim',
+				event = 'BufReadPost',
+			},
+			{
+				'saghen/blink.cmp',
 				event = 'InsertEnter',
 			},
 			{
-				'williamboman/mason-lspconfig.nvim',
-				event = 'BufReadPost',
-			}
+				"folke/lazydev.nvim",
+				opts = {
+					library = {
+						{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+					},
+				},
+			},
 		},
 		config = function()
 			local ms_lsp = require('mason-lspconfig')
@@ -25,7 +33,7 @@ return {
 				handlers = {
 					function(server_name)
 						require('lspconfig')[server_name].setup({
-							capabilities = require('cmp_nvim_lsp').default_capabilities(),
+							capabilities = require('blink.cmp').get_lsp_capabilities(),
 							on_attach = function(client, bufnr)
 								require('lsp-format').on_attach(client, bufnr)
 							end
@@ -47,10 +55,5 @@ return {
 				}
 			}
 		}
-	},
-	{
-		"folke/lazydev.nvim",
-		ft = "lua",
-		opts = {},
 	},
 }
