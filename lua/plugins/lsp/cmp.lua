@@ -29,18 +29,18 @@ return {
 		{
 			'L3MON4D3/LuaSnip',
 			event = 'InsertEnter',
-		},
-		{
-			"zbirenbaum/copilot.lua",
-			cmd = "Copilot",
-			opts = {}
+			dependencies = { "rafamadriz/friendly-snippets" },
 		},
 		{
 			"zbirenbaum/copilot-cmp",
 			lazy = true,
 			event = "InsertEnter",
 			dependencies = {
-				'zbirenbaum/copilot.lua',
+				{
+					'zbirenbaum/copilot.lua',
+					cmd = "Copilot",
+					opts = {}
+				}
 			},
 			opts = {}
 		}
