@@ -30,11 +30,16 @@ return {
 		},
 	},
 	{
-		dir = vim.fn.stdpath("config") .. "/lua/plugins/local/floaterm",
-		lazy = true,
-		cmd = "Floaterminal",
-		keys = { { "<leader>tf", ":Floaterminal<CR>", desc = "Open floating terminal" } },
-		main = "plugins.local.floaterm",
-		opts = {}
-	},
+		'akinsho/toggleterm.nvim',
+		version = "*",
+		opts = {
+			float_opts = {
+				border = 'curved',
+			},
+		},
+		keys = {
+			{ "<leader>tt", "<cmd>ToggleTerm<CR>",                 desc = "Toggle terminal" },
+			{ "<leader>tf", "<cmd>ToggleTerm direction=float<CR>", desc = "Toggle floating terminal" },
+		}
+	}
 }
