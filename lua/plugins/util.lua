@@ -34,8 +34,7 @@ return {
 		lazy = true,
 		cmd = "Floaterminal",
 		keys = { { "<leader>tf", ":Floaterminal<CR>", desc = "Open floating terminal" } },
-		config = function()
-			require("plugins.local.floaterm").setup()
-		end,
+		main = "plugins.local.floaterm",
+		opts = {}
 	},
 }
