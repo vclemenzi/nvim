@@ -29,4 +29,13 @@ return {
 			indent = { char = "▏" },
 		},
 	},
+	{
+		dir = vim.fn.stdpath("config") .. "/lua/plugins/local/floaterm",
+		lazy = true,
+		cmd = "Floaterminal",
+		keys = { { "<leader>tf", ":Floaterminal<CR>", desc = "Open floating terminal" } },
+		config = function()
+			require("plugins.local.floaterm").setup()
+		end,
+	},
 }
